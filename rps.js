@@ -48,7 +48,8 @@ function playRound(humanChoice, computerChoice) {
         ++computerScore
         return ("you lose scissors beats paper");
     } else if (computerChoice == "scissors" && humanChoice == "scissors") {
-    } else return ("did not enter a choice try another choice");
+        return("you tie you both picked scissors");
+    } else return ("nice try enter a vaild option");
 
 }
 
