@@ -1,5 +1,3 @@
-console.log("Hello World!");
-
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 10);
     if (computerChoice <= 3) {
@@ -52,164 +50,32 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
-
-
-
-
-humanChoice = 0;
+let humanChoice = "";
 let rock = document.querySelector("#rock");
 let paper = document.querySelector("#paper");
 let scissors = document.querySelector("#scissors");
 let newGame = document.querySelector("#newGame");
-
 const container = document.querySelector("#container");
-
-rock.addEventListener("click", () => {
-    humanChoice = "rock";
-    const computerChoice = getComputerChoice();
-    const content = document.createElement("div");
-    content.textContent =  ('You chose: ' + humanChoice);
-    container.appendChild(content);
-
-    const content2 = document.createElement("div");
-    content2.textContent = (' The computer chose: ' + computerChoice);
-    container.appendChild(content2);
-
-    const content3 = document.createElement("div");
-    content3.textContent = (playRound(humanChoice, computerChoice));
-    container.appendChild(content3);
-
-    const content4 = document.createElement("div");
-    content4.textContent = (humanScore + " your score");
-    container.appendChild(content4);
-
-    const content5 = document.createElement("div");
-    content5.textContent = (computerScore + " computer's score");
-    container.appendChild(content5);
-
-    const content6 = document.createElement("div");
-    if (humanScore > 4 && computerScore < 5) {
-        humanScore = 0;
-        computerScore = 0;
-        content6.textContent = ("You win the Game!!! press any button to go again");
-        container.appendChild(content6);
-        rock.addEventListener("click", () => {
-            window.location.reload();
-        });
-        paper.addEventListener("click", () => {
-            window.location.reload();
-        });
-        scissors.addEventListener("click", () => {
-            window.location.reload();
-        });
-        
-
-
-    } else if (computerScore > 4 && humanScore < 5) {
-        humanScore = 0;
-        computerScore = 0;
-        content6.textContent = ("You lose press any button to try again");
-        container.appendChild(content6);
-        rock.addEventListener("click", () => {
-            window.location.reload();
-        });
-        paper.addEventListener("click", () => {
-            window.location.reload();
-        });
-        scissors.addEventListener("click", () => {
-            window.location.reload();
-        });
-
-    }    else if (computerScore == 5 && humanScore == 5) {
-    content6.textContent = ("You tie press any button to try again")
-    container.appendChild(content6);
-    rock.addEventListener("click", () => {
-        window.location.reload();
-    });
-    paper.addEventListener("click", () => {
-    window.location.reload();
-    });
-    scissors.addEventListener("click", () => {
-        window.location.reload();
-    });
-}
-    });
+let buttons = document.querySelector('button')
 
 paper.addEventListener("click", () => {
-    humanChoice = "paper";
-    const computerChoice = getComputerChoice();
-    const content = document.createElement("div");
-    content.textContent =  ('You chose: ' + humanChoice);
-    container.appendChild(content);
-
-    const content2 = document.createElement("div");
-    content2.textContent = (' The computer chose: ' + computerChoice);
-    container.appendChild(content2);
-
-    const content3 = document.createElement("div");
-    content3.textContent = (playRound(humanChoice, computerChoice));
-    container.appendChild(content3);
-
-    const content4 = document.createElement("div");
-    content4.textContent = (humanScore + " your score");
-    container.appendChild(content4);
-
-    const content5 = document.createElement("div");
-    content5.textContent = (computerScore + " computer's score");
-    container.appendChild(content5);
-
-    const content6 = document.createElement("div");
-    if (humanScore > 4) {
-        humanScore = 0;
-        computerScore = 0;
-        content6.textContent = ("You win the Game!!! press any button to go again");
-        container.appendChild(content6);
-        rock.addEventListener("click", () => {
-            window.location.reload();
-        });
-        paper.addEventListener("click", () => {
-            window.location.reload();
-        });
-        scissors.addEventListener("click", () => {
-            window.location.reload();
-        });
-
-
-    } else if (computerScore > 4) {
-        humanScore = 0;
-        computerScore = 0;
-        content6.textContent = ("You lose press any button to try again");
-        container.appendChild(content6);
-        rock.addEventListener("click", () => {
-            window.location.reload();
-        });
-        paper.addEventListener("click", () => {
-            window.location.reload();
-        });
-        scissors.addEventListener("click", () => {
-            window.location.reload();
-        });
-
-    }    else if (computerScore == 5 && humanScore == 5) {
-        content6.textContent = ("You tie press any button to try again")
-        container.appendChild(content6);
-        rock.addEventListener("click", () => {
-            window.location.reload();
-        });
-        paper.addEventListener("click", () => {
-        window.location.reload();
-        });
-        scissors.addEventListener("click", () => {
-            window.location.reload();
-        });
-    }
+    playChoice("paper")
 });
 
 scissors.addEventListener("click", () => {
     humanChoice = "scissors";
-    const computerChoice = getComputerChoice();
+    playChoice("scissors")
+});
+
+rock.addEventListener("click", () => {
+    playChoice("rock")
+});
+
+let playChoice = function (event) {
+    humanChoice = event
+    let computerChoice = getComputerChoice();
     const content = document.createElement("div");
-    content.textContent =  ('You chose: ' + humanChoice);
+    content.textContent = ('You chose: ' + humanChoice);
     container.appendChild(content);
 
     const content2 = document.createElement("div");
@@ -229,9 +95,13 @@ scissors.addEventListener("click", () => {
     container.appendChild(content5);
 
     const content6 = document.createElement("div");
-    if (humanScore > 4) {
-        humanScore = 0;
-        computerScore = 0;
+    if (computerScore == 5 && humanScore == 5) {
+        content6.textContent = ("You tie press any button to try again")
+        container.appendChild(content6);
+        buttons.addEventListener("click", () => {
+            window.location.reload();
+        });
+    } else if  (humanScore > 4) {
         content6.textContent = ("You win the Game!!! press any button to go again");
         container.appendChild(content6);
         rock.addEventListener("click", () => {
@@ -246,38 +116,18 @@ scissors.addEventListener("click", () => {
 
 
     } else if (computerScore > 4) {
-        humanScore = 0;
-        computerScore = 0;
         content6.textContent = ("You lose press any button to try again");
         container.appendChild(content6);
-        rock.addEventListener("click", () => {
+        buttons.addEventListener("click", () => {
             window.location.reload();
         });
-        paper.addEventListener("click", () => {
-            window.location.reload();
-        });
-        scissors.addEventListener("click", () => {
-            window.location.reload();
-        });
-
-    }    else if (computerScore == 5 && humanScore == 5) {
-        content6.textContent = ("You tie press any button to try again")
-        container.appendChild(content6);
-        rock.addEventListener("click", () => {
-            window.location.reload();
-        });
-        paper.addEventListener("click", () => {
-        window.location.reload();
-        });
-        scissors.addEventListener("click", () => {
-            window.location.reload();
-        });
-    }
-});
+    } 
+};
 
 newGame.addEventListener("click", () => {
     window.location.reload();
 });
+
 
 
 
