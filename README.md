@@ -1,1 +1,1 @@
-see it live at https://jomcbob.github.io/rock-paper-scissor/rps.html
+see it live at https://jomcbob.github.io/rock-paper-scissors/rps.html
