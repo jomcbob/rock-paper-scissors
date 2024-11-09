@@ -1,1 +1,1 @@
-this is a repo that I am going to make, store, and share my first rock-paper-scissors game 
+see it live at https://jomcbob.github.io/rock-paper-scissor/rps.html
